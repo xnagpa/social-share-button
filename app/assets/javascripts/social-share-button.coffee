@@ -15,6 +15,7 @@ window.SocialShareButton =
     url = encodeURIComponent($parent.data("url") || '')
     via = encodeURIComponent($parent.data("via") || '')
     desc = encodeURIComponent($parent.data("desc") || ' ')
+    to = encodeURIComponent($parent.data("to") || '')
 
     # tracking click events if google analytics enabled
     ga = window[window['GoogleAnalyticsObject'] || 'ga']
@@ -25,7 +26,7 @@ window.SocialShareButton =
       url = encodeURIComponent(location.href)
     switch site
       when "email"
-        location.href = "mailto:?to=&subject=#{title}&body=#{url}"
+        location.href = "mailto:?to=#{to}&subject=#{title}&body=#{url}"
       when "weibo"
         SocialShareButton.openUrl("http://service.weibo.com/share/share.php?url=#{url}&type=3&pic=#{img}&title=#{title}&appkey=#{appkey}", 620, 370)
       when "twitter"
